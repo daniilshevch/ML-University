@@ -216,10 +216,101 @@ print("#18")
 matr = np.array([[1.,2.,3.],
                  [1.,2.,3.],
                  [1.,2.,3.]])
-
 first_indexes = np.random.randint(low = 0, high = 3, size = 2)
 second_indexes = np.random.randint(low = 0, high = 3, size = 2)
 matr[first_indexes, second_indexes] = np.nan
 print(matr)
 #19
+print("#19")
+matr = np.array([[np.nan,   2.,    3. ],
+                 [    1., np.nan,    3. ],
+                 [     1.,    2., np.nan]])
+print(np.isnan(matr))
+n_mis = np.isnan(matr).sum()
+print(n_mis)
+idx_rows = np.where(np.isnan(matr))[0]
+idx_cols = np.where(np.isnan(matr))[1]
+idx_mis = np.where(np.isnan(matr))
+print(idx_rows)
+print(idx_cols)
+print(idx_mis)
+#20
+print("#20")
+matr = np.array([[0, 0, 0, 2, 2],
+                 [0, 2, 1, 2, 2],
+                 [2, 2, 1, 0, 0],
+                 [0, 0, 2, 0, 1],
+                 [1, 2, 2, 0, 0]])
+x = 0
+y = 3
+column_x = matr[:, x]
+column_y = matr[:, y]
+corr = np.corrcoef(column_x, column_y)[0][1]
+print(corr)
+#21
+print("#21")
+matr = np.array([[1.0,    2.0],
+                 [np.nan, 4.0]])
+flag = np.isnan(matr).sum() > 0
+print(np.isnan(matr))
+flag2 = np.isnan(matr).any()
+print(flag)
+print(flag2)
+#22
+print("#22")
+matr = np.array([[1.0,    2.0],
+                 [np.nan, 4.0]])
+isna = np.isnan(matr)
+matr[isna] = 0
+print(matr)
+#23
+print("#23")
+arr = np.array([1,2,3,1,2,4])
+uniques, counts = np.unique(arr, return_counts=True)
+print(uniques)
+print(counts)
+#24
+print("#24")
+height_arr = np.array([1.80, 2.10, 1.90, 1.60, 1.70, 1.65, 1.75])
+bins = [0.0, 1.7, 1.85, 2.0]
+label_map = ['short', 'medium', 'tall', 'alien']
+bin_indexes = np.digitize(height_arr, bins)
+print(bin_indexes)
+height_labels = [label_map[bin_index - 1] for bin_index in bin_indexes]
+print(height_labels)
+#25
+print("#25")
+arr = np.array([[5.7, 4.3, 9.8],
+                [1.0, 2.0, 1.6],
+                [6.5, 2.5, 4.6]])
+arr[:,len(arr[0]) - 1] = np.prod(arr,axis=1)
+print(arr)
+#26
+print("#26")
+arr = np.array([['Alice', 7],
+                ['Bob',   1],
+                ['Alice', 3],
+                ['Alice', 2],
+                ['Alice', 5],
+                ['Bob',   9],
+                ['Bob',   1],
+                ['Alice', 6],
+                ['Bob',   6],
+                ['Alice', 3],
+                ['Alice', 1]])
+student = 'Alice'
+contains_student_mask = arr[:, 0] == student
+print(contains_student_mask)
+contains_student_subarray = arr[contains_student_mask]
+print(contains_student_subarray)
+sorted = np.unique(np.sort(contains_student_subarray[:,1].astype(int)))
+print(sorted[-2])
+#27
+print("#27")
+arr = np.array([8, 5, 2, 7, 5, 9, 0, 9, 8, 6, 2, 0, 5, 3, 10, 2, 3, 6, 4, 1])
+threshold = 8
+
+
+
+
 
